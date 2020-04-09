@@ -18,14 +18,14 @@ RUN /install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile; \
     rm -r /install-tl-unx; \
 	rm install-tl-unx.tar.gz
 
-ENV PATH="/usr/local/texlive/2017/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/2019/bin/x86_64-linux:${PATH}"
 ENV HOME /data
 WORKDIR /data
 
 ARG CACHE_DATE_UPDATES=2020-04-09
 
 RUN tlmgr install scheme-full
-RUN tlmgr install latexmk
+#RUN tlmgr install latexmk
 
 VOLUME ["/data"]
 
