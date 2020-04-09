@@ -15,6 +15,7 @@ WORKDIR /data
 ARG CACHE_DATE_UPDATES=2020-04-09
 
 # Install / update latex packages
+RUN tlmgr init-usertree
 RUN tlmgr install latexmk
 RUN tlmgr update --all
 
