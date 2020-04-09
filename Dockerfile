@@ -25,7 +25,8 @@ WORKDIR /data
 ARG CACHE_DATE_UPDATES=2020-04-09
 
 RUN tlmgr install scheme-full
-#RUN tlmgr install latexmk
+
+RUN apt-get update && apt-get install -y git
 
 VOLUME ["/data"]
 
