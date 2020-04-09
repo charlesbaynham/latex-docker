@@ -5,18 +5,27 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ARG CACHE_DATE_BASE=2020-04-09
 
-RUN apt-get update
-RUN apt-get install -y git
-RUN apt-get install -y texlive-full
-RUN apt-get install -y xzdec wget
+RUN apt-get update -q \
+    && apt-get install -qy build-essential wget libfontconfig1 \
+    && rm -rf /var/lib/apt/lists/*
 
+# Install TexLive with scheme-basic
+RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz;
+RUN mkdir /install-tl-unx;
+RUN tar -xvf install-tl-unx.tar.gz -C /install-tl-unx --strip-components=1;
+RUN echo "selected_scheme scheme-basic" >> /install-tl-unx/texlive.profile;
+RUN /install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile; \
+    rm -r /install-tl-unx; \
+	rm install-tl-unx.tar.gz
+
+ENV PATH="/usr/local/texlive/2017/bin/x86_64-linux:${PATH}"
 ENV HOME /data
 WORKDIR /data
 
 ARG CACHE_DATE_UPDATES=2020-04-09
 
-# Install / update latex packages
-#RUN tlmgr init-usertree
-#RUN tlmgr install latexmk
-#RUN tlmgr update --all
+RUN tlmgr install scheme-full
+RUN tlmgr install latexmk
+
+VOLUME ["/data"]
 
