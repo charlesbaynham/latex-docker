@@ -5,6 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ARG CACHE_DATE_BASE=2020-04-09
 
+RUN apt-get update && apt-get install -y git
+
 RUN apt-get update -q \
     && apt-get install -qy build-essential wget libfontconfig1 \
     && rm -rf /var/lib/apt/lists/*
@@ -25,8 +27,6 @@ WORKDIR /data
 ARG CACHE_DATE_UPDATES=2020-04-09
 
 RUN tlmgr install scheme-full
-
-RUN apt-get update && apt-get install -y git
 
 VOLUME ["/data"]
 
