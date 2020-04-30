@@ -24,7 +24,7 @@ RUN /install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile; \
     rm -r /install-tl-unx; \
 	rm install-tl-unx.tar.gz
 
-ENV PATH="/usr/local/texlive/2019/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/2020/bin/x86_64-linux:${PATH}"
 ENV HOME /data
 WORKDIR /data
 
