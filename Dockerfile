@@ -7,6 +7,10 @@ ARG CACHE_DATE_BASE=2020-04-09
 
 RUN apt-get update && apt-get install -y git
 
+# Install python for pygments
+RUN apt-get update && apt-get install -y python3-pip
+RUN pip3 install Pygments
+
 RUN apt-get update -q \
     && apt-get install -qy build-essential wget libfontconfig1 \
     && rm -rf /var/lib/apt/lists/*
