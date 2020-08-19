@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y python3-pip
 RUN pip3 install Pygments
 
 RUN apt-get update -q \
-    && apt-get install -qy build-essential wget libfontconfig1 \
+    && apt-get install -qy build-essential wget libfontconfig1 ghostscript \
     && rm -rf /var/lib/apt/lists/*
 
 # Install TexLive with scheme-basic
