@@ -3,7 +3,7 @@ LABEL maintainer="Charles Baynham <charles.baynham@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG CACHE_DATE_BASE=2020-04-09
+ARG CACHE_DATE_BASE=2020-08-19
 
 RUN apt-get update && apt-get install -y git
 
@@ -28,7 +28,7 @@ ENV PATH="/usr/local/texlive/2020/bin/x86_64-linux:${PATH}"
 ENV HOME /data
 WORKDIR /data
 
-ARG CACHE_DATE_UPDATES=2020-04-09
+ARG CACHE_DATE_UPDATES=2020-08-19
 
 RUN tlmgr install scheme-full
 
